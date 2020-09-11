@@ -1,0 +1,19 @@
+
+Express is used to build the server side app.
+
+body-parser is the middle ware used to interconnect express with the view.
+
+steps: 
+ -> create a server folder
+ -> cd to server -> npm init --yes       // to create a package.json
+ -> npm install express body-parser --save
+ -> create routes
+ -> routes will connects to the db and also provides url request mappings
+ -> registration implementation using mongoose
+ ->  login implementation using mongoose
+ -> 
+
+
+
+
+
