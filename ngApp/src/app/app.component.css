@@ -1,6 +1,8 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
-.space {
-    margin-left: 20px;
-}   
+.navbar {
+  height: 20%;
+  font-size: 30px;
+}
+.navbar-brand {
+  font-size: 32px;
+  font-weight: bolder;
+}
