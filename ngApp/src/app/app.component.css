@@ -1,5 +1,5 @@
 .navbar {
-  height: 20%;
+  min-height: 20%;
   font-size: 30px;
 }
 .navbar-brand {
