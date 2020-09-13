@@ -10,8 +10,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   private _registerUrl: string = "http://localhost:3000/api/register";
-  
+  private _loginUrl: string = "http://localhost:3000/api/login";
+
   registerUser(user) {
-    return this.http.put<any>(this._registerUrl, user);
+    return this.http.post<any>(this._registerUrl, user);
+  }
+  loginUser(user) {
+    return this.http.post<any>(this._loginUrl, user);   // syntax: url, requestentity-body
   }
 }

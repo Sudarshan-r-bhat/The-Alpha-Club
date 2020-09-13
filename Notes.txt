@@ -1,3 +1,31 @@
 Note:
 	In Type script there is both primitive 'string' and
 	wrapper 'String'.
+Express is used to build the server side app.
+
+body-parser is the middle ware used to interconnect express with the view.
+
+steps: 
+ -> create a server folder
+ -> cd to server -> npm init --yes       // to create a package.json
+ -> npm install express body-parser --save
+ -> create routes
+ -> routes will connects to the db and also provides url request mappings
+ -> registration implementation using mongoose
+ -> login implementation using mongoose
+ -> @server -> npm install jsonwebtoken --save. you use jsonwebtoken for route guards 
+ 	and authentication. the token it encode as xxxx.yyyy.zzzz, where x == headers, 
+	 y== payload, z == signature / secret.
+ -> 
+
+
+
+bootstrap:
+.col-md-4  == for medium-devices use 4 grids.
+.col-ld-4  == for large-devices use 4 grids.
+.col-12    == for small devices use all 12 grids. 	
+
+.mb-5: margin bottom of 5(max)
+.mt-5: margin top of 5(maximum)
+.pt-3: padding top of 5(max)
+

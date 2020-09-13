@@ -3,10 +3,10 @@
 const express = require("express");   // import express model
 const router = express.Router();
 const User = require("../model/user");  // importing the model.
-
 const mongoose = require('mongoose');
-const db = "mongodb://localhost:27017/users";    // db connection string: <mongodb://user:password:url:dbname>   recheck the url and port numbers for mongo.
+const jwt = require('jsonwebtoken');
 
+const db = "mongodb://localhost:27017/users";    // db connection string: <mongodb://user:password:url:dbname>   recheck the url and port numbers for mongo.
 mongoose.connect(db, err => (err ? console.error("Error! " + err): console.log("connected to Mongo DB")));
 
 router.get("/", (req, res) => {
@@ -20,7 +20,14 @@ router.post("/register", (req, res) => {
     // mongoose implicitly allows save method for the model. {some implicit method injection by mongoose}
     user.save((error, registeredUser) => {
         if(error) console.log(error);
-        else res.status(200).send(registeredUser);
+        else {
+            // where did the _id come from ???
+            const payload = {subject: user._id};  // create a payload
+            const token = jwt.sign(payload, "secretkey"); // syntax: payload, secret key
+            res.status(200).send({token});  // syntax: objects.
+
+            
+        }
     });
 });
 
@@ -37,7 +44,9 @@ router.post('/login', (req, res) => {
                 if(user.password !== userData.password) {
                     res.status(401).send("Invalid Password");
                 } else {
-                    res.status(200).send(user);
+                    const payload = {subject: user._id};
+                    const token = jwt.sign(payload, "secretkey");
+                    res.status(200).send(token);
                 }
             }
         }

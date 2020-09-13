@@ -11,8 +11,8 @@ export class RegisterComponent implements OnInit {
 
 
   registrationDetails = {  
-    email: String,
-    password: String};
+    email: "",
+    password: ""};
 
 
   email: String;
