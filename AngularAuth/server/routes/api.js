@@ -46,7 +46,7 @@ router.post('/login', (req, res) => {
                 } else {
                     const payload = {subject: user._id};
                     const token = jwt.sign(payload, "secretkey");
-                    res.status(200).send(token);
+                    res.status(200).send({token});   // always remember to send only and only objects!
                 }
             }
         }
