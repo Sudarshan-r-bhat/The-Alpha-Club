@@ -1,27 +1,51 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded0">
+      <div class="card-header">
+        <h3 class="mb-0">Register</h3>
+      </div>
+      <div class="card-body">
+        <form action="#" class="form">
+          <div class="form-group">
+            <label for="">Email</label>
+            <input [(ngModel)]="registrationDetails.email" name="email" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input [(ngModel)]="registrationDetails.password" name="password" type="password" class="form-control rounded-0" required>
+          </div>
+          
+          <button (click)="registerUser()" class="btn btn-primary float-right" type="button">Register</button>
+        </form>
+      </div>
+    </div>
+  </div> 
+</div>
 
+<!-- 
 <div class="border">
     <form>
         <div class="form-group">
-          <label for="exampleInputEmail1">Username:</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="username">Username:</label>
+          <input name="username" [(ngModel)]="registrationDetails.username"  type="text" class="form-control">
           <small class="form-text text-muted">can be you're email</small>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password:</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input name="password" [(ngModel)]="registrationDetails.password"  type="password" class="form-control" id="exampleInputPassword1" ngModel>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Email:</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label  name="email">Email:</label>
+            <input [(ngModel)]="registrationDetails.email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ngModel>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
+          </div> 
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" ngModel>
           <small class="form-check-label" for="exampleCheck1">Subscribe to news letters</small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="registerUser()">Submit</button>
       </form>
-</div>
+</div> -->
 
 
 

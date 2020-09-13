@@ -3,6 +3,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const api = require("./routes/api")
+const cors = require('cors');
+
 
 // listening port
 const PORT = 3000
@@ -10,6 +12,7 @@ const PORT = 3000
 
 const app = express();
 
+app.use(cors());      // used to handle cross origin requests.
 app.use(bodyParser.json());
 
 // request mapping and response entity

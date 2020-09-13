@@ -1,0 +1,3 @@
+Note:
+	In Type script there is both primitive 'string' and
+	wrapper 'String'.
