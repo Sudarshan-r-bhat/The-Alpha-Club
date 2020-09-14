@@ -9,6 +9,27 @@ const jwt = require('jsonwebtoken');
 const db = "mongodb://localhost:27017/users";    // db connection string: <mongodb://user:password:url:dbname>   recheck the url and port numbers for mongo.
 mongoose.connect(db, err => (err ? console.error("Error! " + err): console.log("connected to Mongo DB")));
 
+// function to verify the request.
+// syntax: reqest, responseEntity, nextEntity . what  is next ??
+function verifyToken(req, res, next) {
+    if(!req.headers.authorization) {
+        return res.status(401).send("UnAuthorized request");
+    }
+    // extract token.
+    const token = req.headers.authorization.split(" ")[1];
+    if(token === 'null') {
+        return res.status(401).send("unauthorized access");
+    }
+    const payload = jwt.verify(token, "secretkey");
+    if(!payload) return res.status(401).send('unauthorized access');
+    req.userId = payload.subject;
+    next();
+
+}
+
+
+
+
 router.get("/", (req, res) => {
     res.send("From API route");
 });
@@ -84,7 +105,8 @@ router.get("/events", (req, res) => {
     res.json(events);
 });
 
-router.get("/specialevents", (req, res) => {
+// verify function is used by the router class.
+router.get("/specialevents", verifyToken, (req, res) => {
     let specialevents = [
         {
             "_id": "190kj-39843-370DDD",

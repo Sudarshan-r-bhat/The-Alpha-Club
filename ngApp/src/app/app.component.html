@@ -19,10 +19,14 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="/register" routerLinkActive="active" href="#" class="nav-link">Register</a>
+        <a *ngIf="!loggedIn()" routerLink="/register" routerLinkActive="active" href="#" class="nav-link">Register</a>
       </li>
       <li class="nav-item active">
-        <a routerLink="/login" routerLinkActive="active" href="#" class="nav-link">Login</a>
+        <a *ngIf="!loggedIn()" routerLink="/login" routerLinkActive="active" href="#" class="nav-link">Login</a>
+      </li>
+      <li class="nav-item active">
+        <a *ngIf="loggedIn()" routerLink="/events" 
+        (click) = "logoutUser()" routerLinkActive="active" href="#" class="nav-link">Logout</a>
       </li>
     </ul>
   </div>
