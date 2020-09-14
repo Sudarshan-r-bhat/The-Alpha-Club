@@ -16,7 +16,15 @@ steps:
  -> @server -> npm install jsonwebtoken --save. you use jsonwebtoken for route guards 
  	and authentication. the token it encode as xxxx.yyyy.zzzz, where x == headers, 
 	 y== payload, z == signature / secret.
- -> 
+ -> save the server generated token to the front-end localstorage.
+ -> in the ngApp -> generate a Guard service. To implement the route Guard. and implement the
+	condition in the authService compenent.
+ -> Implement token interceptor for server-side token verification.
+ -> we are using 'HttpInterceptor' in the interceptor Class, but in the app.module.ts
+    we are importing HTTP_INTERCEPTORS', and adding this service as a configured object.
+ -> 	
+
+
 
 
 

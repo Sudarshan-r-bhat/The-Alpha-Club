@@ -18,4 +18,13 @@ export class AuthService {
   loginUser(user) {
     return this.http.post<any>(this._loginUrl, user);   // syntax: url, requestentity-body
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');  // To return a boolean.
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
 }

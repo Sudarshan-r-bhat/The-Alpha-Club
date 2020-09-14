@@ -9,9 +9,12 @@ import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
-import {AuthService} from './auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService} from './auth.service';
 import { EventService } from './event.service';
+import { AuthGuard } from "./auth.guard";
+import { TokenInterceptorService } from './token-interceptor.service';
+
 
 
 @NgModule({
@@ -28,9 +31,19 @@ import { EventService } from './event.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule
-
+    
   ],
-  providers: [AuthService, EventService],
+  providers: [AuthService, EventService, AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// Note: In the providers array. we are putting a generalization HTTP_INTERCEPTOR, 
+// and defining 
+// specfic class, setting multi to 'true' to enable us to add more HttpInterceptors
+// in the future.
